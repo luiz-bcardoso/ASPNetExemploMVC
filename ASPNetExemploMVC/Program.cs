@@ -1,16 +1,16 @@
-using ASPNetExemploMVC.DAO;
+using ASPNetExemploMVC.DAL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
 //Adicionado contexto para o banco de dados
 builder.Services.AddDbContext<Contexto>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("ProdutoContexto"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
